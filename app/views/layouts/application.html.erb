@@ -6,9 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+  <div id="header">
+    <div id="logo">
+      あしあとロゴ
+    </div>
+    <div id="menu">
+      メニュー
+    </div>
+  </div>
+
+  <div id="side">
+    <div id="eventsubmit">
+
+    </div>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
