@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  def map
+
+  end
+
   # GET /events
   # GET /events.json
   def index
