@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ($) ->
+  latlng = new google.maps.LatLng(34.663411, 135.50191);
+  myOptions = {
+    zoom: 12,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);

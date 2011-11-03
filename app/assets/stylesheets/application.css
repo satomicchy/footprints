@@ -28,5 +28,10 @@ body {
 
 /* Content */
 #content {
-    margin-left: 370px;
+    margin-left: 400px;
+}
+
+#content #map_canvas {
+    width:  700px;
+    height: 550px;
 }
