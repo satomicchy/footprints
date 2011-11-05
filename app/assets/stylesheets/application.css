@@ -5,23 +5,38 @@ body {
 
 /* Header */
 #header {
-    height: 60px;
+    height: 80px;
 }
 
 #header #logo {
     float: left;
     width: 360px;
+    height: 80px;
+    margin-left: 40px;
+    font-style: italic;
+    font-size: 90%;
+    text-align: center;
+    background: url(logo2.jpg) no-repeat;
+    background-size: 45%;
 }
 
-#header #menu {
-    margin-left: 370px;
+#header #menu_map {
+    float: left;
+    width: 200px;
+    padding-top: 23px;
+}
+
+#header #menu_list {
+    float: left;
+    width: 200px;
+    padding-top: 23px;
 }
 
 /* Side */
 #side {
     float: left;
     width: 380px;
-    height: 2000px;
+    height: 560px;
     background: url(sidepicture.jpg) no-repeat;
     background-size: 110%;
 }
