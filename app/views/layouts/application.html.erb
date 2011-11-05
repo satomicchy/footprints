@@ -27,7 +27,13 @@
 
   <div id="side">
     <div id="eventsubmit">
+      <%= form_for(@event) do |f| %>
+        イベント名<%= f.text_field :name, :size => "20" %><br />
+        住所<%= f.text_field :address %><br />
+        日にち<%= f.date_select :organize_at %><br />
+<%= button_to_function '登録', "javascript:void(0)", :id => "event_button" %>
 
+      <% end %>
     </div>
   </div>
 
