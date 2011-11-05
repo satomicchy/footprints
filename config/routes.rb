@@ -1,4 +1,6 @@
 Footprints::Application.routes.draw do
+  resources :friends
+
   resources :events do
     get 'map', :on => :collection
   end
