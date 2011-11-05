@@ -18,10 +18,10 @@
       コミュの履歴、知り合いmap
     </div>
     <div id="menu_map">
-      <%= image_tag ("menu_map.jpg"), :width => "110px" %>
+      <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), map_events_path %>
     </div>
     <div id="menu_map">
-      <%= image_tag ("menu_list.jpg"), :width => "70px" %>
+      <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
     </div>
   </div>
 
@@ -32,10 +32,7 @@
   </div>
 
   <div id="content">
-
-       <div id="map_canvas"></div> 
-
-    <%#= yield %>
+    <%= yield %>
   </div>
 
 </body>
