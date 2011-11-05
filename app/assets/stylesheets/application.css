@@ -3,6 +3,10 @@ body {
     color: white;
 }
 
+input {
+    background-color: #D8D8D8;
+}
+
 /* Header */
 #header {
     height: 80px;
