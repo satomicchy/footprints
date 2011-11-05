@@ -1,6 +1,5 @@
 jQuery ($) ->
   $('#event_button').click ->
-    alert('hoge')
     params = $("#new_event").serialize()
     textfield = $("#event_name")
     if textfield.val().length > 0
