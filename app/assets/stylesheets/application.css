@@ -50,3 +50,13 @@ body {
     width:  700px;
     height: 550px;
 }
+
+#content #event_list {
+    float: left;
+    width: 350px;
+}
+
+#content #friend_list {
+    float: left;
+    width: 300px;
+}

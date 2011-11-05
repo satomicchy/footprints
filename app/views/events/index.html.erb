@@ -1,19 +1,35 @@
-<h1>events</h1>
+<div id="event_list">
+  <h1>Events</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Organize at</th>
+      <th></th>
+    </tr>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.organize_at %></td>
+      <td><%= link_to 'Show', event %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Organize at</th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.organize_at %></td>
-    <td><%= link_to 'Show', event %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<div id="friend_list">
+  <h1>Friends</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Twitter</th>
+      <th></th>
+    </tr>
+  <% @friends.each do |friend| %>
+    <tr>
+      <td><%= friend.name %></td>
+      <td><%= friend.twitter %></td>
+      <td><%= link_to 'Show', friend %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
