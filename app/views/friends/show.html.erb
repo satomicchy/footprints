@@ -17,4 +17,5 @@
 
 
 <%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Destroy', @friend, confirm: 'Are you sure?', method: :delete %> |
 <%= link_to 'Back', friends_path %>

@@ -3,21 +3,17 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Prefecture</th>
     <th>Twitter</th>
-    <th></th>
-    <th></th>
+    <th>Prefecture</th>
     <th></th>
   </tr>
 
 <% @friends.each do |friend| %>
   <tr>
     <td><%= friend.name %></td>
-    <td><%= friend.prefecture %></td>
     <td><%= friend.twitter %></td>
+    <td><%= friend.prefecture %></td>
     <td><%= link_to 'Show', friend %></td>
-    <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
-    <td><%= link_to 'Destroy', friend, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
