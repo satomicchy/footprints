@@ -15,7 +15,7 @@
 
   <div id="header">
     <div id="logo">
-      コミュの履歴、知り合いmap
+      勉強会の履歴、知り合いmap
     </div>
     <div id="menu_map">
       <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), map_events_path %>
@@ -26,21 +26,40 @@
   </div>
 
   <div id="side">
-    <div id="eventsubmit">
-      <%= form_for(@event) do |f| %>
-        イベント名<%= f.text_field :name, :size => "20" %><br />
-        住所<%= f.text_field :address %><br />
-        日にち<%= f.date_select :organize_at %><br />
-        <%= button_to_function '登録', "", :id => "event_button" %>
-      <% end %>
-    </div>
-    <div id="friendsubmit">
-      <%= form_for(@friend) do |f| %>
-        名前<%= f.text_field :name, :size => "20" %><br />
-        県<%= f.text_field :prefecture %><br />
-        twitter<%= f.text_field :twitter %><br />
-        <%= button_to_function '登録', "javascript:void(0)", :id => "friend_button" %>
-      <% end %>
+    <div id="submit_area">
+      <table>
+        <%= form_for(@event) do |f| %>
+          <tr>
+            <td>イベント</td><td><%= f.text_field :name, :size => "20" %></td>
+          </tr>
+          <tr>
+            <td>住所</td><td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td>日程</td><td><%= f.date_select :organize_at %></td>
+          </tr>
+          <tr>
+            <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
+          </tr>
+        <% end %>
+        <%= form_for(@friend) do |f| %>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>名前</td><td><%= f.text_field :name, :size => "20" %></td>
+          </tr>
+          <tr>
+            <td>県</td><td><%= f.text_field :prefecture %></td>
+          </tr>
+          <tr>
+            <td>twitter</td><td><%= f.text_field :twitter %></td>
+          </tr>
+          <tr>
+            <td><%= button_to_function 'ぺた', "javascript:void(0)", :id => "friend_button" %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 

@@ -45,6 +45,10 @@ input {
     background-size: 110%;
 }
 
+#side #submit_area {
+    padding-top: 30px;
+}
+
 /* Content */
 #content {
     margin-left: 400px;
