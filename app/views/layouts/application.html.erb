@@ -30,7 +30,7 @@
       <table>
         <%= form_for(@event) do |f| %>
           <tr>
-            <td>イベント</td><td><%= f.text_field :name, :size => "20" %></td>
+            <td>イベント</td><td><%= f.text_field :name, :size => "15" %></td>
           </tr>
           <tr>
             <td>住所</td><td><%= f.text_field :address %></td>
@@ -47,13 +47,13 @@
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>名前</td><td><%= f.text_field :name, :size => "20" %></td>
+            <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
           </tr>
           <tr>
-            <td>県</td><td><%= f.text_field :prefecture %></td>
+            <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
           </tr>
           <tr>
-            <td>twitter</td><td><%= f.text_field :twitter %></td>
+            <td>twitter</td><td><%= f.text_field :twitter, :size => "15" %></td>
           </tr>
           <tr>
             <td><%= button_to_function 'ぺた', "javascript:void(0)", :id => "friend_button" %></td>
