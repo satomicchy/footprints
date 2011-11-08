@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class EventsController < ApplicationController
   def map
 
@@ -46,6 +47,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.get_latlng
 
     respond_to do |format|
       if @event.save
