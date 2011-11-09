@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
   def map
-
+    @events = Event.all
+    @friends = Friend.all
   end
 
   # GET /events
