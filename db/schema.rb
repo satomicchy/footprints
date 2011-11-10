@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111108143454) do
+ActiveRecord::Schema.define(:version => 20111110155147) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20111108143454) do
     t.string   "name"
     t.string   "prefecture"
     t.string   "twitter"
-    t.integer  "latitude"
-    t.integer  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

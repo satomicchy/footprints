@@ -4,7 +4,9 @@ jQuery ($) ->
     textfield = $("#friend_name")
     if textfield.val().length > 0
       textfield.val("")
-      $.post("/friends.json", params).done(->
-        $("#friends_list").load("/friends")
-      )
-
+      $.post("/friends.json", params).done (friend)->
+        new google.maps.Marker({
+          position: new google.maps.LatLng(friend.latitude, friend.longitude),
+          map: document.map,
+          title: friend.name
+        })

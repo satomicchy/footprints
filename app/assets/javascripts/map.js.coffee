@@ -15,3 +15,10 @@ jQuery ($) ->
         map: document.map,
         title: event.name
       });
+
+    $(friends).each (i, friend) ->
+      new google.maps.Marker({
+        position: new google.maps.LatLng(friend.latitude, friend.longitude),
+        map: document.map,
+        title: friend.name
+      });
