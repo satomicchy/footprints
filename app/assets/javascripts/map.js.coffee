@@ -7,12 +7,11 @@ jQuery ($) ->
       mapTypeControl: false,
       streetViewControl: false
     };
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    document.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
     $(events).each (i, event) ->
-      console.log(event)
       new google.maps.Marker({
         position: new google.maps.LatLng(event.latitude, event.longitude),
-        map: map,
+        map: document.map,
         title: event.name
       });
