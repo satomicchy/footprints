@@ -1,15 +1,4 @@
 class FriendsController < ApplicationController
-  # GET /friends
-  # GET /friends.json
-  def index
-    @friends = Friend.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @friends }
-    end
-  end
-
   # GET /friends/1
   # GET /friends/1.json
   def show
