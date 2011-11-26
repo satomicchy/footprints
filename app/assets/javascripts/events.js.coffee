@@ -8,5 +8,6 @@ jQuery ($) ->
         new google.maps.Marker({
           position: new google.maps.LatLng(event.latitude, event.longitude),
           map: document.map,
-          title: event.name
+          title: event.name,
+          icon: "http://dl.dropbox.com/u/4039576/footprint_marker.gif"
         })

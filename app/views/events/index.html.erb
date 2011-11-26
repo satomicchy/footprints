@@ -27,7 +27,7 @@
   <% @friends.each do |friend| %>
     <tr>
       <td><%= friend.name %></td>
-      <td><%= friend.twitter %></td>
+      <td>@<%= friend.twitter %></td>
       <td><%= link_to 'Show', friend %></td>
     </tr>
   <% end %>

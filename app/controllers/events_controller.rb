@@ -8,8 +8,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
-    @friends = Friend.all
+    @events = Event.order("organize_at").all
+    @friends = Friend.order("prefecture").all
 
     respond_to do |format|
       format.html # index.html.erb
