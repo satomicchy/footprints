@@ -26,8 +26,12 @@
   </div>
 
   <div id="side">
-    <%= link_to "Sign in with Twitter", "/auth/twitter" %>
     <div id="submit_area">
+      <% if current_user %>  
+        ようこそ, <%= current_user.name %>！  <%= link_to "Sign Out", signout_path %>
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+      <% end %>
       <table>
         <%= form_for(@event) do |f| %>
           <tr>
