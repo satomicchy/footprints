@@ -57,6 +57,7 @@ input {
 #content #map_canvas {
     width:  700px;
     height: 550px;
+    color: black;
 }
 
 #content #event_list {
