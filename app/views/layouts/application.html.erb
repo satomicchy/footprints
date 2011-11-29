@@ -23,6 +23,12 @@
     <div id="menu_map">
       <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
     </div>
+    <div id="menu_map">
+      <%= form_for(:user, :method => :get) do |f| %>
+        <%= f.select :id, User.all.collect {|u| [u.name, u.id]}, :prompt => "" %><br />
+        <%= f.submit 'みせてー' %>
+      <% end %>
+    </div>
   </div>
 
   <div id="side">
