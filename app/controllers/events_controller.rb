@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
   def map
-    @events = Event.all
-    @friends = Friend.all
+    user_id = params[:user] ? params[:user][:id] : current_user.id
+    @events = Event.where("user_id = ?", user_id)
+    @friends = Friend.where("user_id = ?", user_id)
   end
 
   # GET /events
@@ -48,6 +49,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.user_id = current_user.id
     @event.get_latlng
 
     respond_to do |format|
