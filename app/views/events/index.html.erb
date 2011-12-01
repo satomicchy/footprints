@@ -2,15 +2,15 @@
   <h1>Events</h1>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Organize at</th>
+      <th>イベント名</th>
+      <th>開催日</th>
       <th></th>
     </tr>
   <% @events.each do |event| %>
     <tr>
       <td><%= event.name %></td>
       <td><%= event.organize_at %></td>
-      <td><%= link_to 'Show', event %></td>
+      <td width="42"><%= link_to '←みる', event %></td>
     </tr>
   <% end %>
   </table>
@@ -20,15 +20,15 @@
   <h1>Friends</h1>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Twitter</th>
+      <th>氏名</th>
+      <th>Twitter ID</th>
       <th></th>
     </tr>
   <% @friends.each do |friend| %>
     <tr>
       <td><%= friend.name %></td>
       <td>@<%= friend.twitter %></td>
-      <td><%= link_to 'Show', friend %></td>
+      <td width="42"><%= link_to '←みる', friend %></td>
     </tr>
   <% end %>
   </table>

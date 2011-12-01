@@ -24,9 +24,11 @@
       <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
     </div>
     <div id="menu_map">
-      <%= form_for(:user, :method => :get) do |f| %>
-        <%= f.select :id, User.all.collect {|u| [u.name, u.id]}, :prompt => "" %><br />
-        <%= f.submit 'みせてー' %>
+      <% if request.path == "/events/map" %>
+        <%= form_for(:user, :method => :get) do |f| %>
+          <%= f.select :id, User.all.collect {|u| [u.name, u.id]}, :prompt => "" %><br />
+          <%= f.submit 'みせてー' %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -45,7 +47,7 @@
             <td>住所</td><td><%= f.text_field :address %></td>
           </tr>
           <tr>
-            <td>日程</td><td><%= f.date_select :organize_at %></td>
+            <td>開催日</td><td><%= f.date_select :organize_at %></td>
           </tr>
           <tr>
             <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
@@ -62,7 +64,7 @@
             <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
           </tr>
           <tr>
-            <td>twitter</td><td><%= f.text_field :twitter, :size => "15" %></td>
+            <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
           </tr>
           <tr>
             <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>

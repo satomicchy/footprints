@@ -1,31 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>イベント名：</b>
   <%= @event.name %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b>住所：</b>
   <%= @event.address %>
 </p>
 
 <p>
-  <b>Organize at:</b>
+  <b>開催日：</b>
   <%= @event.organize_at %>
 </p>
 
 <p>
-  <b>Latitude:</b>
+  <b>緯度：</b>
   <%= @event.latitude %>
 </p>
 
 <p>
-  <b>Longitude:</b>
+  <b>経度：</b>
   <%= @event.longitude %>
 </p>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Destroy', @event, confirm: 'Are you sure?', method: :delete %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Destroy', @event, confirm: 'Are you sure?', method: :delete %>

@@ -61,10 +61,13 @@ input {
 
 #content #event_list {
     float: left;
-    width: 350px;
+    width: 360px;
+    font-size: 14px;
 }
 
 #content #friend_list {
     float: left;
     width: 300px;
+    margin-left: 20px;
+    font-size: 14px;
 }

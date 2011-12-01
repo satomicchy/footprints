@@ -1,21 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>氏名：</b>
   <%= @friend.name %>
 </p>
 
 <p>
-  <b>Prefecture:</b>
+  <b>県：</b>
   <%= @friend.prefecture %>
 </p>
 
 <p>
-  <b>Twitter:</b>
+  <b>TwitterID：</b>
   <%= @friend.twitter %>
 </p>
 
 
 <%= link_to 'Edit', edit_friend_path(@friend) %> |
-<%= link_to 'Destroy', @friend, confirm: 'Are you sure?', method: :delete %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Destroy', @friend, confirm: 'Are you sure?', method: :delete %>
