@@ -23,14 +23,14 @@
     <div id="menu_map">
       <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
     </div>
-    <div id="menu_map">
-      <% if request.path == "/events/map" %>
+    <% if request.path == "/events/map" %>
+      <div id="see_map">
         <%= form_for(:user, :method => :get) do |f| %>
-          <%= f.select :id, User.all.collect {|u| [u.name, u.id]}, :prompt => "" %><br />
-          <%= f.submit 'みせてー' %>
+          <%= f.select :id, User.all.collect {|u| [u.name, u.id]}, :prompt => "" %>
+          <%= f.submit 'みせてー', :id => "see_button" %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
   <div id="side">
@@ -38,7 +38,11 @@
       <% if current_user %>  
         ようこそ, <%= current_user.name %>！  <%= link_to "Sign Out", signout_path %>
       <% end %>
+
       <table>
+        <tr>
+          <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker.gif", :size => "30x30") %></td>
+        </tr>
         <%= form_for(@event) do |f| %>
           <tr>
             <td>イベント</td><td><%= f.text_field :name, :size => "15" %></td>
@@ -53,10 +57,13 @@
             <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
           </tr>
         <% end %>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
+        </tr>
         <%= form_for(@friend) do |f| %>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
           <tr>
             <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
           </tr>

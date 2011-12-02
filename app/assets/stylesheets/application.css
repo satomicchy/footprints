@@ -30,10 +30,19 @@ input {
     padding-top: 23px;
 }
 
-#header #menu_list {
+#header #see_map {
     float: left;
-    width: 200px;
-    padding-top: 23px;
+    width: 210px;
+    padding-top: 38px;
+}
+
+#see_button {
+    border-color: #aaaaaa;
+    border-width: 4px;
+    border-style: groove;
+    background: rgba(0,0,0,0);
+    color: #fff;
+    font-size: 15px;
 }
 
 /* Side */
@@ -46,7 +55,25 @@ input {
 }
 
 #side #submit_area {
-    padding-top: 30px;
+    padding-top: 10px;
+}
+
+#event_button {
+    border-color: #aaaaaa;
+    border-width: 4px;
+    border-style: groove;
+    background: rgba(0,0,0,0);
+    color: #fff;
+    font-size: 15px;
+}
+
+#friend_button {
+    border-color: #aaaaaa;
+    border-width: 4px;
+    border-style: groove;
+    background: rgba(0,0,0,0);
+    color: #fff;
+    font-size: 15px;
 }
 
 /* Content */
