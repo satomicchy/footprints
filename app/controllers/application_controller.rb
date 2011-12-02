@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
-  before_filter :events, :friends, :users
+  before_filter :events, :friends
 
   def events
     @event = Event.new

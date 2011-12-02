@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
+  before_filter :users
+
   def map
     user_id = params[:user] ? params[:user][:id] : current_user.id
     @events = Event.where("user_id = ?", user_id)
