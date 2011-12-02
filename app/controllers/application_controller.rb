@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def users
-    @users = User.all.reject{|u| u.id == current_user.id}
+    @users = User.all.reject{|u| u.id == current_user.id} if session[:user_id]
   end
 
 end
