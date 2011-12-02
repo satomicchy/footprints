@@ -1,4 +1,6 @@
 class FriendsController < ApplicationController
+  before_filter :users
+
   # GET /friends/1
   # GET /friends/1.json
   def show
