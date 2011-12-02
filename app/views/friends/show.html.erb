@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>氏名：</b>
   <%= @friend.name %>
@@ -15,6 +13,5 @@
   ＠<%= @friend.twitter %>
 </p>
 
-
-<%= link_to 'Edit', edit_friend_path(@friend) %> |
-<%= link_to 'Destroy', @friend, confirm: 'Are you sure?', method: :delete %>
+<%= link_to '↑いじる', edit_friend_path(@friend) %> |
+<%= link_to 'コレいらない', @friend, confirm: '削除しちゃうよ？', method: :delete %>

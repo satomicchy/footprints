@@ -7,6 +7,10 @@ input {
     background-color: #D8D8D8;
 }
 
+a {
+    color: #777;
+}
+
 /* Header */
 #header {
     height: 80px;
@@ -58,16 +62,7 @@ input {
     padding-top: 10px;
 }
 
-#event_button {
-    border-color: #aaaaaa;
-    border-width: 4px;
-    border-style: groove;
-    background: rgba(0,0,0,0);
-    color: #fff;
-    font-size: 15px;
-}
-
-#friend_button {
+#submit_button {
     border-color: #aaaaaa;
     border-width: 4px;
     border-style: groove;
@@ -98,4 +93,17 @@ input {
     width: 300px;
     margin-left: 20px;
     font-size: 14px;
+}
+
+#content #edit_area {
+    margin-top: 10px;
+}
+
+#content #edit_area #edit_button {
+    border-color: #aaaaaa;
+    border-width: 4px;
+    border-style: groove;
+    background: rgba(0,0,0,0);
+    color: #fff;
+    font-size: 15px;
 }

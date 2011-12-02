@@ -54,7 +54,7 @@
             <td>開催日</td><td><%= f.date_select :organize_at %></td>
           </tr>
           <tr>
-            <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
+            <td><%= button_to_function 'ぺた', "", :id => "submit_button" %></td>
           </tr>
         <% end %>
         <tr>
@@ -74,7 +74,7 @@
             <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
           </tr>
           <tr>
-            <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
+            <td><%= button_to_function 'ぺた', "", :id => "submit_button" %></td>
           </tr>
         <% end %>
       </table>
