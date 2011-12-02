@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
-  before_filter :events, :friends
+  before_filter :events, :friends, :users
 
   def events
     @event = Event.new
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def users
+    @users = User.all.reject{|u| u.id == current_user.id}
   end
 
 end
