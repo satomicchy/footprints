@@ -3,6 +3,8 @@ require 'test_helper'
 class FriendsControllerTest < ActionController::TestCase
   setup do
     @friend = friends(:one)
+    @koko_u = users(:koko_u)
+    login_as(@koko_u)
   end
 
   test "should get new" do
@@ -38,6 +40,6 @@ class FriendsControllerTest < ActionController::TestCase
       delete :destroy, id: @friend.to_param
     end
 
-    assert_redirected_to friends_path
+    assert_redirected_to events_path
   end
 end
