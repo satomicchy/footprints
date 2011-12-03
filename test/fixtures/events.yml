@@ -6,6 +6,7 @@ one:
   organize_at: 2011-10-29
   latitude: 1
   longitude: 1
+  user_id: 10
 
 two:
   name: MyString
@@ -13,3 +14,4 @@ two:
   organize_at: 2011-10-29
   latitude: 1
   longitude: 1
+  user_id: 10
