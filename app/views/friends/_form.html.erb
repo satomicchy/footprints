@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :prefecture %><br />
-    <%= f.text_field :prefecture %>
+    <%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %>
   </div>
   <div class="field">
     <%= f.label :twitter %><br />
@@ -27,6 +27,6 @@
   <br />
 
   <div class="actions">
-    <%= f.submit 'ぺた', :id => "submit_button" %>
+    <%= f.submit 'ぺた', :id => "edit_button" %>
   </div>
 <% end %>
