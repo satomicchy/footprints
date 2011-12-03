@@ -45,6 +45,9 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    unless @event.user_id == current_user.id
+      redirect_to map_events_path
+    end
   end
 
   # POST /events
