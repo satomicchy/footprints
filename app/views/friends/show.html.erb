@@ -13,7 +13,7 @@
   ＠<%= @friend.twitter %>
 </p>
 
-<% if @event.user_id == current_user.id %>
+<% if @friend.user_id == current_user.id %>
   <%= link_to '↑いじる', edit_friend_path(@friend) %> |
   <%= link_to 'コレいらない', @friend, confirm: '削除しちゃうよ？', method: :delete %>
 <% else %>

@@ -24,7 +24,7 @@ class FriendsController < ApplicationController
   # GET /friends/1/edit
   def edit
     @friend = Friend.find(params[:id])
-    unless @event.user_id == current_user.id
+    unless @friend.user_id == current_user.id
       redirect_to map_events_path
     end
   end
