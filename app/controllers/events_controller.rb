@@ -11,8 +11,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order("organize_at").all
-    @friends = Friend.order("prefecture").all
+    @events = Event.where("user_id = ?", current_user.id).order("organize_at").all
+    @friends = Friend.where("user_id = ?", current_user.id).order("prefecture").all
 
     respond_to do |format|
       format.html # index.html.erb
