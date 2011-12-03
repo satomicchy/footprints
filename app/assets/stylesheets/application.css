@@ -62,6 +62,11 @@ a {
     padding-top: 10px;
 }
 
+#side #usage {
+  margin-top: 120px;
+  font-size: 80%;
+}
+
 #event_button {
     border-color: #aaaaaa;
     border-width: 4px;
