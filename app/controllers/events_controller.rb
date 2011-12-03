@@ -55,7 +55,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.user_id = current_user.id
-    @event.get_latlng
 
     respond_to do |format|
       if @event.save
