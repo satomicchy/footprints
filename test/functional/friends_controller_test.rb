@@ -40,6 +40,6 @@ class FriendsControllerTest < ActionController::TestCase
       delete :destroy, id: @friend.to_param
     end
 
-    assert_redirected_to friends_path
+    assert_redirected_to events_path
   end
 end
