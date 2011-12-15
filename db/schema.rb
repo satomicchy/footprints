@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128114247) do
+ActiveRecord::Schema.define(:version => 20111215104051) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20111128114247) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  create_table "photos", :force => true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "url"
+    t.integer  "status",     :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["user_id", "status"], :name => "index_photos_on_user_id_and_status"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
