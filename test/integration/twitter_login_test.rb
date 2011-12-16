@@ -3,7 +3,8 @@ require 'test_helper'
 class TwitterLoginTest < ActionDispatch::IntegrationTest
   fixtures :all
   setup do
-    stub_twitter_oauth({:screen_name => "yalab", :name => "Atsushi Yoshida"})
+    @user = {:screen_name => "yalab", :name => "Atsushi Yoshida"}
+    stub_twitter_oauth(@user)
   end
   test "twitter login" do
     assert_difference('User.count', +1) do
@@ -14,5 +15,9 @@ class TwitterLoginTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_match %r|http://#{request.host}/events/map|, response.header['Location']
     end
+    user =  User.last
+    assert_equal @user[:screen_name], user.name
+    assert_not_nil user.twitter_token
+    assert_not_nil user.twitter_secret
   end
 end
