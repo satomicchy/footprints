@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215104051) do
+ActiveRecord::Schema.define(:version => 20111216034247) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20111215104051) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
   end
 
 end
