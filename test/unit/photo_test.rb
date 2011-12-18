@@ -3,7 +3,7 @@ require 'test_helper'
 class PhotoTest < ActiveSupport::TestCase
   include ActionDispatch::TestProcess
   setup do
-    @user = users(:koko_u)
+    @user = users(:one)
     @photo = @user.photos.new(:binary => fixture_file_upload('/photo.jpg', 'image/jpeg', :binary))
 
     @response_body = {"id_str" => (rand * 100000).floor.to_s}
