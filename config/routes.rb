@@ -1,6 +1,8 @@
 Footprints::Application.routes.draw do
   get_actions = [:index, :show]
   get "welcome/index"
+
+  resources :photos, :only => [:create, :destroy]
   resources :friends, :except => get_actions << :index
   resources :events, :except => get_actions
   resources :users, :only => [] do
