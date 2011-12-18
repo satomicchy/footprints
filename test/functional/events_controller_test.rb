@@ -3,8 +3,8 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
-    @koko_u = users(:koko_u)
-    login_as(@koko_u)
+    @user = users(:two)
+    login_as(@user)
   end
 
   test "should get index" do

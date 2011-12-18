@@ -2,6 +2,7 @@
 require "open-uri"
 class Event < ActiveRecord::Base
   before_save :get_latlng
+  belongs_to :user
 
   def get_latlng
     return if address.blank?
