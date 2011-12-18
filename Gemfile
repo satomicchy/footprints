@@ -12,6 +12,7 @@ end
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'exifr'
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.

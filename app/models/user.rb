@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :events
   has_many :friends
+  has_many :photos
 
   def self.create_with_omniauth(auth)
     attributes = {:provider => auth["provider"], :uid => auth["uid"], :name => auth["info"]["nickname"]}

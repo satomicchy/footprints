@@ -11,4 +11,14 @@ class Photo < ActiveRecord::Base
       }
     end
   end
+
+  def post_to_twitter
+    Twitter.configure do |config|
+      config.consumer_key       = TwitterOAuth["CONSUMER_KEY"]
+      config.consumer_secret    = TwitterOAuth["CONSUMER_SECRET"]
+      config.oauth_token        = user.twitter_token
+      config.oauth_token_secret = user.twitter_secret
+    end
+    Twitter.update_with_media("", File.new(binary.path))
+  end
 end
