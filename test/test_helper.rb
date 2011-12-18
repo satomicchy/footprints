@@ -19,6 +19,10 @@ class ActiveSupport::TestCase
     address = {:results => [{:geometry => {:location => {:lat => lat, :lng => lng}}}]}
     stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=MyString&sensor=false").to_return(:status => 200, :body => address.to_json, :headers => {})
   end
+
+  def jsons(key)
+    JSON.parse(File.read(Rails.root.join('test', 'fixtures', "#{key}.json")))
+  end
 end
 
 module ActionDispatch::Integration::RequestHelpers

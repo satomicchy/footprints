@@ -6,7 +6,7 @@ class PhotoTest < ActiveSupport::TestCase
     @user = users(:one)
     @photo = @user.photos.new(:binary => fixture_file_upload('/photo.jpg', 'image/jpeg', :binary))
 
-    @response_body = {"id_str" => (rand * 100000).floor.to_s}
+    @response_body =  jsons(:update_with_media)
     stub_request(:post, "https://upload.twitter.com/1/statuses/update_with_media.json").to_return(:status => 200, :body => @response_body.to_json, :headers => {})
   end
 
@@ -19,6 +19,6 @@ class PhotoTest < ActiveSupport::TestCase
   test "post to twitter" do
     response = @photo.post_to_twitter
     assert_instance_of Twitter::Status, response
-    assert_equal @response_body['id_str'], response.to_hash['id_str']
+    assert_equal @response_body["entities"]["media"].first["url"], @photo.url
   end
 end
