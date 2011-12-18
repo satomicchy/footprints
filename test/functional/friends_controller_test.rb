@@ -5,6 +5,8 @@ class FriendsControllerTest < ActionController::TestCase
     @friend = friends(:one)
     @user = users(:one)
     login_as(@user)
+
+    stub_google_location_api(0, 0)
   end
 
   test "should get new" do
