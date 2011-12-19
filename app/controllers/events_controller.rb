@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
-  def map
-    user_id = params[:user] ? params[:user][:id] : current_user.id
-    @events = Event.where("user_id = ?", user_id)
-      .group_by {|event| [event.latitude, event.longitude] }
-    @friends = Friend.where("user_id = ?", user_id)
-      .group_by {|friend| [friend.latitude, friend.longitude] }
-  end
-
   # GET /events
   # GET /events.json
   def index
@@ -46,7 +38,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     unless @event.user_id == current_user.id
-      redirect_to map_events_path
+      redirect_to user_map_path(current_user)
     end
   end
 

@@ -27,5 +27,5 @@
   <%= link_to '↑いじる', edit_event_path(@event) %> |
   <%= link_to 'コレいらない', @event, confirm: '削除しちゃうよ？', method: :delete %>
 <% else %>
-  <%= link_to '自分のMapに戻る', map_events_path %>
+  <%= link_to '自分のMapに戻る', user_map_path(current_user) %>
 <% end %>

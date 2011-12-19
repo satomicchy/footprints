@@ -18,13 +18,14 @@
       勉強会の履歴、知り合いmap
     </div>
     <div id="menu_map">
-      <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), map_events_path %>
+      <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), user_map_path(current_user) %>
     </div>
     <div id="menu_map">
       <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
     </div>
-    <% if request.path == "/events/map" %>
+    <% if request.path == user_map_path(current_user) %>
       <div id="see_map">
+
         <%= form_for(:user, :method => :get) do |f| %>
           <%= f.select :id, @users.collect {|u| [u.name, u.id]}, :prompt => "" %>
           <%= f.submit 'みせてー', :id => "see_button" %>
