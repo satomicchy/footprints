@@ -1,6 +1,7 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
   attr_accessor :binary
+  before_create :extract_geopoint!, :post_to_twitter
 
   def extract_geopoint!
     tags = EXIFR::JPEG.new(binary.path)

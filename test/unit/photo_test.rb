@@ -21,4 +21,10 @@ class PhotoTest < ActiveSupport::TestCase
     assert_instance_of Twitter::Status, response
     assert_equal @response_body["entities"]["media"].first["url"], @photo.url
   end
+
+  test "set callbacks" do
+    callbacks = Photo._create_callbacks.map(&:raw_filter)
+    assert_includes callbacks, :extract_geopoint!
+    assert_includes callbacks, :post_to_twitter
+  end
 end
