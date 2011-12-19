@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     @users = User.where("NOT id = ?", current_user)
   end
 
+  def user_of_context
+    @user_of_context ||= User.find(params[:user_id]) if params[:user_id]
+  end
+  helper_method :user_of_context
 end
