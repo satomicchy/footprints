@@ -3,8 +3,8 @@ require 'test_helper'
 class FriendsControllerTest < ActionController::TestCase
   setup do
     @friend = friends(:one)
-    @koko_u = users(:koko_u)
-    login_as(@koko_u)
+    @user = users(:one)
+    login_as(@user)
   end
 
   test "should get new" do

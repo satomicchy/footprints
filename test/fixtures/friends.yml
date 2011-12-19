@@ -4,7 +4,7 @@ one:
   name: MyString
   prefecture: MyString
   twitter: MyString
-  user_id: 10
+  user: one
 
 two:
   name: MyString
