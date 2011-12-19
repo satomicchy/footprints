@@ -3,7 +3,7 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
-    @user = users(:two)
+    @user = users(:one)
     login_as(@user)
   end
 
