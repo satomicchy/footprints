@@ -60,23 +60,38 @@
           <tr>
             <td>&nbsp;</td>
           </tr>
-          <tr>
-            <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
-          </tr>
+        <% end %>
+      </table>
+      <table>
+        <tr>
+          <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
+        </tr>
           <%= form_for(@friend) do |f| %>
             <tr>
               <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
             </tr>
+          <tr>
+            <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
+          </tr>
+          <tr>
+            <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
+          </tr>
+          <tr>
+            <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= form_for(@photo) do |f| %>
+        <table>
+          <tr>
+            <td colspan="2">写真</td>
+          </tr>
             <tr>
-              <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
+              <td></td><td><%= f.file_field :binary %></td>
             </tr>
-            <tr>
-              <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
-            </tr>
-            <tr>
-              <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td colspan="2"><%= f.submit 'ぺた' %></td>
+          </tr>
         </table>
       <% end %>
     </div>
