@@ -17,20 +17,20 @@
     <div id="logo">
       勉強会の履歴、知り合いmap
     </div>
-    <div id="menu_map">
-      <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), map_events_path %>
-    </div>
-    <div id="menu_map">
-      <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
-    </div>
-    <% if request.path == "/events/map" %>
-      <div id="see_map">
-        <%= form_for(:user, :method => :get) do |f| %>
-          <%= f.select :id, @users.collect {|u| [u.name, u.id]}, :prompt => "" %>
-          <%= f.submit 'みせてー', :id => "see_button" %>
-        <% end %>
+    <% if user_of_context %>
+      <div id="menu_map">
+        <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), user_map_path(user_of_context) %>
+      </div>
+      <div id="menu_map">
+        <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), user_events_path(user_of_context) %>
       </div>
     <% end %>
+    <div id="see_map">
+      <%= form_for(:user, :method => :get) do |f| %>
+        <%= f.select :id, @users.collect {|u| [u.name, u.id]}, :prompt => "" %>
+        <%= button_to_function 'みせてー', '', :id => 'see_button' %>
+      <% end %>
+    </div>
   </div>
 
   <div id="side">
@@ -38,54 +38,58 @@
       <% if current_user %>  
         ようこそ, <%= current_user.name %>！  <%= link_to "Sign Out", signout_path %>
       <% end %>
-
-      <table>
-        <tr>
-          <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker.gif", :size => "30x30") %></td>
-        </tr>
-        <%= form_for(@event) do |f| %>
+      <% if mypage? %>
+        <table>
           <tr>
-            <td>イベント</td><td><%= f.text_field :name, :size => "15" %></td>
+            <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker.gif", :size => "30x30") %></td>
+          </tr>
+          <%= form_for(@event) do |f| %>
+            <tr>
+              <td>イベント</td><td><%= f.text_field :name, :size => "15" %></td>
+            </tr>
+            <tr>
+              <td>住所</td><td><%= f.text_field :address %></td>
+            </tr>
+            <tr>
+              <td>開催日</td><td><%= f.date_select :organize_at %></td>
+            </tr>
+            <tr>
+              <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>住所</td><td><%= f.text_field :address %></td>
+            <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
           </tr>
-          <tr>
-            <td>開催日</td><td><%= f.date_select :organize_at %></td>
-          </tr>
-          <tr>
-            <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
-        </tr>
-        <%= form_for(@friend) do |f| %>
-          <tr>
-            <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
-          </tr>
-          <tr>
-            <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
-          </tr>
-          <tr>
-            <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
-          </tr>
-          <tr>
-            <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
-          </tr>
-        <% end %>
-      </table>
+          <%= form_for(@friend) do |f| %>
+            <tr>
+              <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
+            </tr>
+            <tr>
+              <td>県</td><td><%= f.select :prefecture, Friend::Prefecture_name.collect {|p| [p, p]}, :prompt => "" %></td>
+            </tr>
+            <tr>
+              <td>TwitterID</td><td>@<%= f.text_field :twitter, :size => "15" %></td>
+            </tr>
+            <tr>
+              <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </div>
-
     <div id="usage">
-      <ul>
-        <li>イベント名と開催地の住所、開催日を入力して「ぺた」してください</li>
-        <li>友人の名前と所在地、ツイッターIDを入力して「ぺた」してください</li>
-      </ul>
-    </div> 
+      <% if mypage? %>
+        <ul>
+          <li>イベント名と開催地の住所、開催日を入力して「ぺた」してください</li>
+          <li>友人の名前と所在地、ツイッターIDを入力して「ぺた」してください</li>
+        </ul>
+      <% else %>
+        <%= link_to '自分の地図に戻る', user_map_path(current_user) %>
+      <% end %>
+    </div>
   </div>
 
   <div id="content">

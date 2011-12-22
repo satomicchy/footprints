@@ -3,8 +3,8 @@ require 'test_helper'
 class FriendsControllerTest < ActionController::TestCase
   setup do
     @friend = friends(:one)
-    @koko_u = users(:koko_u)
-    login_as(@koko_u)
+    @user = users(:one)
+    login_as(@user)
   end
 
   test "should get new" do
@@ -21,7 +21,7 @@ class FriendsControllerTest < ActionController::TestCase
   end
 
   test "should show friend" do
-    get :show, id: @friend.to_param
+    get :show, user_id: @user.to_param, id: @friend.to_param
     assert_response :success
   end
 
@@ -40,6 +40,6 @@ class FriendsControllerTest < ActionController::TestCase
       delete :destroy, id: @friend.to_param
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to user_events_path(@user)
   end
 end

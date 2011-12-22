@@ -1,16 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-koko_u:
-  id: 10
-  provider: twitter
-  uid: 209343
-  name: 'koko_u'
-
 one:
-  provider: MyString
-  uid: MyString
-  name: MyString
-
+  provider: twitter
+  uid: <%= (rand * 100000).floor.to_s %>
+  name: satomicchy
 
 two:
   provider: MyString

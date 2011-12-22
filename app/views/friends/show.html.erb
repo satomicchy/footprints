@@ -17,5 +17,5 @@
   <%= link_to '↑いじる', edit_friend_path(@friend) %> |
   <%= link_to 'コレいらない', @friend, confirm: '削除しちゃうよ？', method: :delete %>
 <% else %>
-  <%= link_to '自分のMapに戻る', map_events_path %>
+  <%= link_to '自分のMapに戻る', user_map_path(current_user) %>
 <% end %>
