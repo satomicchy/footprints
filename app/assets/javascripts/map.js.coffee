@@ -68,3 +68,17 @@ jQuery ($) ->
       for marker_obj in document.friend_markers
         do (marker_obj) ->
           marker_obj.infowin.close())
+
+
+  render = (object) ->
+    marker = new google.maps.Marker({
+      map: document.map
+      position: new google.maps.LatLng(object.latitude, object.longitude)
+    })
+    google.maps.event.addListener marker, 'click', () ->
+      new google.maps.InfoWindow({
+        content: $("<img>").attr(src: object.url).get(0)
+        position: marker.getPosition()
+      }).open(document.map)
+
+  render photo for photo in photos for point, photos of ivars.photos
