@@ -8,7 +8,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, user_id: @user.to_param
     assert_response :success
     assert_not_nil assigns(:events)
   end
@@ -27,7 +27,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should show event" do
-    get :show, id: @event.to_param
+    get :show, id: @event.to_param, user_id: @user.to_param
     assert_response :success
   end
 
@@ -46,6 +46,6 @@ class EventsControllerTest < ActionController::TestCase
       delete :destroy, id: @event.to_param
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to user_events_path(assigns(:current_user))
   end
 end

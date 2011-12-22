@@ -17,12 +17,14 @@
     <div id="logo">
       勉強会の履歴、知り合いmap
     </div>
-    <div id="menu_map">
-      <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), user_map_path(user_of_context) if user_of_context%>
-    </div>
-    <div id="menu_map">
-      <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), events_path %>
-    </div>
+    <% if user_of_context %>
+      <div id="menu_map">
+        <%= link_to (image_tag ("menu_map.jpg"), :width => "110px"), user_map_path(user_of_context) %>
+      </div>
+      <div id="menu_map">
+        <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), user_events_path(user_of_context) %>
+      </div>
+    <% end %>
     <% if current_user == user_of_context %>
       <div id="see_map">
         <%= form_for(:user, :method => :get) do |f| %>

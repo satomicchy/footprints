@@ -69,7 +69,7 @@ class FriendsController < ApplicationController
     @friend.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_path) }
+      format.html { redirect_to(user_events_path(current_user)) }
       format.json { head :ok }
     end
   end

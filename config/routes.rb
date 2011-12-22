@@ -1,9 +1,10 @@
 Footprints::Application.routes.draw do
   get "welcome/index"
   resources :friends, :except => :index
-  resources :events
+  resources :events, :except => [:index, :show]
   resources :users, :only => [] do
     get 'map'
+    resources :events, :only => [:index, :show]
   end
 
   root :to => 'welcome#index'
