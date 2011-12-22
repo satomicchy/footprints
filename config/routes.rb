@@ -1,15 +1,16 @@
 Footprints::Application.routes.draw do
+  get_actions = [:index, :show]
   get "welcome/index"
-
-  resources :friends
-
-  resources :events do
-    get 'map', :on => :collection
+  resources :friends, :except => get_actions << :index
+  resources :events, :except => get_actions
+  resources :users, :only => [] do
+    get 'map'
+    resources :events, :only => get_actions
+    resources :friends, :only => get_actions
   end
 
   root :to => 'welcome#index'
-
-  match "/auth/:provider/callback" => "sessions#create"  
+  match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 
   # The priority is based upon order of creation:

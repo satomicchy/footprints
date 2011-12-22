@@ -10,7 +10,7 @@
     <tr>
       <td><%= event.name %></td>
       <td><%= event.organize_at %></td>
-      <td width="42"><%= link_to '←みる', event %></td>
+      <td width="42"><%= link_to '←みる', [@user_of_context, event] %></td>
     </tr>
   <% end %>
   </table>
@@ -28,7 +28,7 @@
     <tr>
       <td><%= friend.name %></td>
       <td>@<%= friend.twitter %></td>
-      <td width="42"><%= link_to '←みる', friend %></td>
+      <td width="42"><%= link_to '←みる', [@user_of_context, friend] %></td>
     </tr>
   <% end %>
   </table>

@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
-  def map
-    user_id = params[:user] ? params[:user][:id] : current_user.id
-    @events = Event.where("user_id = ?", user_id)
-      .group_by {|event| [event.latitude, event.longitude] }
-    @friends = Friend.where("user_id = ?", user_id)
-      .group_by {|friend| [friend.latitude, friend.longitude] }
-  end
-
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where("user_id = ?", current_user.id).order("organize_at").all
-    @friends = Friend.where("user_id = ?", current_user.id).order("prefecture").all
+    @events = user_of_context.events.order("organize_at").all
+    @friends = user_of_context.friends.order("prefecture").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +38,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     unless @event.user_id == current_user.id
-      redirect_to map_events_path
+      redirect_to user_map_path(current_user)
     end
   end
 
@@ -90,7 +82,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to user_events_path(current_user) }
       format.json { head :ok }
     end
   end

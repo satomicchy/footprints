@@ -3,14 +3,17 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
-    @koko_u = users(:koko_u)
-    login_as(@koko_u)
+    @user = users(:one)
+    login_as(@user)
   end
 
   test "should get index" do
-    get :index
+    get :index, user_id: @user.to_param
     assert_response :success
     assert_not_nil assigns(:events)
+    ["friend", "event"].each do |k|
+      assert_tag :tag => 'a', :attributes => {:href => send("user_#{k}_path", @user, assigns(k.pluralize.to_sym).first)}
+    end
   end
 
   test "should get new" do
@@ -27,7 +30,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should show event" do
-    get :show, id: @event.to_param
+    get :show, id: @event.to_param, user_id: @user.to_param
     assert_response :success
   end
 
@@ -46,6 +49,6 @@ class EventsControllerTest < ActionController::TestCase
       delete :destroy, id: @event.to_param
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to user_events_path(assigns(:current_user))
   end
 end
