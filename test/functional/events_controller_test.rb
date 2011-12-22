@@ -11,6 +11,9 @@ class EventsControllerTest < ActionController::TestCase
     get :index, user_id: @user.to_param
     assert_response :success
     assert_not_nil assigns(:events)
+    ["friend", "event"].each do |k|
+      assert_tag :tag => 'a', :attributes => {:href => send("user_#{k}_path", @user, assigns(k.pluralize.to_sym).first)}
+    end
   end
 
   test "should get new" do

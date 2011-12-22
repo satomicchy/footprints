@@ -21,7 +21,7 @@ class FriendsControllerTest < ActionController::TestCase
   end
 
   test "should show friend" do
-    get :show, id: @friend.to_param
+    get :show, user_id: @user.to_param, id: @friend.to_param
     assert_response :success
   end
 
