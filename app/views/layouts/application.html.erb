@@ -25,6 +25,9 @@
       <div id="menu_map">
         <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), user_events_path(user_of_context) %>
       </div>
+      <div id="menu_map">
+        <%= link_to 'Photo', user_photos_path(user_of_context) %>
+      </div>
     <% end %>
     <div id="see_map">
       <%= form_for(:user, :method => :get) do |f| %>

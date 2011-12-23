@@ -7,8 +7,9 @@ Footprints::Application.routes.draw do
   resources :events, :except => get_actions
   resources :users, :only => [] do
     get 'map'
-    resources :events, :only => get_actions
+    resources :events,  :only => get_actions
     resources :friends, :only => get_actions
+    resources :photos,  :only => :index
   end
 
   root :to => 'welcome#index'

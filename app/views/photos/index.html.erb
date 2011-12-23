@@ -1,0 +1,4 @@
+<% @photos.each do |photo| %>
+  <%= image_tag photo.url + ':thumb' %>
+  <%= link_to '←コレいらない', photo, confirm: '削除しちゃうよ？', method: :delete, class: 'photo_destroy' if current_user && photo.user_id == current_user.id %>
+<% end %>
