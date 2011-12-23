@@ -13,11 +13,12 @@ class TwitterLoginTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_match %r|http://#{request.host}/auth/twitter/callback|, response.header['Location']
       follow_redirect!
-      assert_match %r|http://#{request.host}/events/map|, response.header['Location']
+      user =  User.last
+      assert_equal user_map_url(user), response.header['Location']
+
+      assert_equal @user[:screen_name], user.name
+      assert_not_nil user.twitter_token
+      assert_not_nil user.twitter_secret
     end
-    user =  User.last
-    assert_equal @user[:screen_name], user.name
-    assert_not_nil user.twitter_token
-    assert_not_nil user.twitter_secret
   end
 end
