@@ -19,7 +19,8 @@ class PhotoTest < ActiveSupport::TestCase
   test "post to twitter" do
     response = @photo.post_to_twitter
     assert_instance_of Twitter::Status, response
-    assert_equal @response_body["entities"]["media"].first["url"], @photo.url
+    assert_equal @response_body["entities"]["media"].first["id_str"], @photo.id_str
+    assert_equal @response_body["entities"]["media"].first["media_url_https"], @photo.url
   end
 
   test "set callbacks" do

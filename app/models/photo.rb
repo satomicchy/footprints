@@ -21,7 +21,9 @@ class Photo < ActiveRecord::Base
       config.oauth_token_secret = user.twitter_secret
     end
     Twitter.update_with_media("", File.new(binary.path)).tap{|status|
-      self.url = status.to_hash["entities"]["media"].first["url"]
+      status = status.to_hash["entities"]["media"].first
+      self.url = status["media_url_https"]
+      self.id_str = status["id_str"]
     }
   end
 end
