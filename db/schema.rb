@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(:version => 20111216034247) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "url"
-    t.integer  "status",     :default => 0
+    t.string   "id_str"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "photos", ["user_id", "status"], :name => "index_photos_on_user_id_and_status"
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"

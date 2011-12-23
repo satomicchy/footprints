@@ -4,11 +4,11 @@ class CreatePhotos < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :url
-      t.integer :status, :default => 0
+      t.string :id_str
       t.references :user
 
       t.timestamps
     end
-    add_index :photos, [:user_id, :status]
+    add_index :photos, :user_id
   end
 end

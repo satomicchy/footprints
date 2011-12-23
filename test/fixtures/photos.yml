@@ -4,12 +4,10 @@ one:
   latitude: 1.5
   longitude: 1.5
   url: MyString
-  status: 1
-  user: 
+  user: one
 
 two:
   latitude: 1.5
   longitude: 1.5
   url: MyString
-  status: 1
-  user: 
+  user: two
