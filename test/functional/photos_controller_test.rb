@@ -11,6 +11,6 @@ class PhotosControllerTest < ActionController::TestCase
     assert_difference("@user.photos.count", +1) do
       post :create, :photo => {:binary => fixture_file_upload('/photo.jpg', 'image/jpeg', :binary)}
     end
-    assert_redirected_to map_events_path
+    assert_redirected_to user_map_path(@user)
   end
 end
