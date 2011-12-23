@@ -70,15 +70,20 @@ jQuery ($) ->
           marker_obj.infowin.close())
 
 
-  render = (object) ->
+  render = (objects) ->
+    content = (objects.reduce (a, b) ->
+      a.append($("<img>").attr(src: b.url + ':thumb'))
+      a.append('<br>') if a.find('img').length % 3 == 2
+      a
+    , $('<div>')).get(0)
     marker = new google.maps.Marker({
       map: document.map
-      position: new google.maps.LatLng(object.latitude, object.longitude)
+      position: new google.maps.LatLng(objects[0].latitude, objects[0].longitude)
     })
     google.maps.event.addListener marker, 'click', () ->
       new google.maps.InfoWindow({
-        content: $("<img>").attr(src: object.url).get(0)
+        content: content
         position: marker.getPosition()
       }).open(document.map)
 
-  render photo for photo in photos for point, photos of ivars.photos
+  render photos for point, photos of ivars.photos
