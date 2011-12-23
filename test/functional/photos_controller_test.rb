@@ -30,4 +30,11 @@ class PhotosControllerTest < ActionController::TestCase
     assert_equal user.id, assigns(:photos).first.user_id
     assert_no_tag :tag => 'a', :attributes => {:class => 'photo_destroy'}
   end
+
+  test "DELETE :destroy as valid user" do
+    assert_difference "Photo.count", -1 do
+      delete :destroy, :id => @user.photos.first.to_param
+    end
+    assert_redirected_to user_photos_path(@user)
+  end
 end
