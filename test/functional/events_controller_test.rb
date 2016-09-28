@@ -5,6 +5,8 @@ class EventsControllerTest < ActionController::TestCase
     @event = events(:one)
     @user = users(:one)
     login_as(@user)
+
+    stub_google_location_api(100, 200)
   end
 
   test "should get index" do

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
-  before_filter :events, :friends, :users
+  before_filter :events, :friends, :users, :photos
 
   def events
     @event = Event.new
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
 
   def users
     @users = User.where("NOT id = ?", current_user)
+  end
+
+  def photos
+    @photo = Photo.new
   end
 
   def user_of_context

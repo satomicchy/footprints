@@ -11,6 +11,8 @@ end
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'exifr'
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,6 +40,7 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'minitest'
+  gem 'webmock', :require => false
 end
 
 group :production do

@@ -3,6 +3,7 @@
 <head>
   <title>Footprints</title>
   <%= stylesheet_link_tag    "application" %>
+  <%= javascript_tag "var ivars = #{assigns.to_json}"%>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
@@ -24,6 +25,9 @@
       <div id="menu_map">
         <%= link_to (image_tag ("menu_list.jpg"), :width => "70px"), user_events_path(user_of_context) %>
       </div>
+      <div id="menu_map">
+        <%= link_to 'Photo', user_photos_path(user_of_context) %>
+      </div>
     <% end %>
     <div id="see_map">
       <%= form_for(:user, :method => :get) do |f| %>
@@ -39,11 +43,11 @@
         ようこそ, <%= current_user.name %>！  <%= link_to "Sign Out", signout_path %>
       <% end %>
       <% if mypage? %>
-        <table>
-          <tr>
-            <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker.gif", :size => "30x30") %></td>
-          </tr>
-          <%= form_for(@event) do |f| %>
+        <%= form_for(@event) do |f| %>
+          <table>
+            <tr>
+              <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker.gif", :size => "30x30") %></td>
+            </tr>
             <tr>
               <td>イベント</td><td><%= f.text_field :name, :size => "15" %></td>
             </tr>
@@ -56,14 +60,13 @@
             <tr>
               <td><%= button_to_function 'ぺた', "", :id => "event_button" %></td>
             </tr>
-          <% end %>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
-          </tr>
-          <%= form_for(@friend) do |f| %>
+          </table>
+        <% end %>
+        <%= form_for(@friend) do |f| %>
+          <table>
+            <tr>
+              <td><%= image_tag("http://dl.dropbox.com/u/4039576/footprint_marker2.gif", :size => "30x30") %></td>
+            </tr>
             <tr>
               <td>名前</td><td><%= f.text_field :name, :size => "15" %></td>
             </tr>
@@ -76,8 +79,21 @@
             <tr>
               <td><%= button_to_function 'ぺた', "", :id => "friend_button" %></td>
             </tr>
-          <% end %>
-        </table>
+          </table>
+        <% end %>
+        <%= form_for(@photo) do |f| %>
+          <table>
+            <tr>
+              <td colspan="2">写真</td>
+            </tr>
+            <tr>
+              <td></td><td><%= f.file_field :binary %></td>
+            </tr>
+            <tr>
+              <td colspan="2"><%= f.submit 'ぺた' %></td>
+            </tr>
+          </table>
+        <% end %>
       <% end %>
     </div>
     <div id="usage">

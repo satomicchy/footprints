@@ -68,3 +68,22 @@ jQuery ($) ->
       for marker_obj in document.friend_markers
         do (marker_obj) ->
           marker_obj.infowin.close())
+
+
+  render = (objects) ->
+    content = (objects.reduce (a, b) ->
+      a.append($("<img>").attr(src: b.url + ':thumb'))
+      a.append('<br>') if a.find('img').length % 3 == 2
+      a
+    , $('<div>')).get(0)
+    marker = new google.maps.Marker({
+      map: document.map
+      position: new google.maps.LatLng(objects[0].latitude, objects[0].longitude)
+    })
+    google.maps.event.addListener marker, 'click', () ->
+      new google.maps.InfoWindow({
+        content: content
+        position: marker.getPosition()
+      }).open(document.map)
+
+  render photos for point, photos of ivars.photos
